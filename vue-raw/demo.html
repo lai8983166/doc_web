@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <select v-model="date.year">
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+        </select>
+    </div>
+    <script type="module">
+        import { createApp, reactive, ref, watch } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        createApp({
+            setup() {
+                const date = reactive({
+                    year: "2024",
+                    month: "10"
+                })
+                watch(() => date.year, (pre, cur) => {
+                    console.log("pre", pre, "cur", cur)
+                    if (date.year == "2024") {
+                        console.log("2024")
+                    }
+                })
+                return {
+                    date,
+                    watch
+                }
+            }
+        }
+
+        ).mount("#app")
+    </script>
+
+</body>
+
+</html>
