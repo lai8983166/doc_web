@@ -1,0 +1,3 @@
+node dist/app.js
+npx tsc
+mysql -u root -p
