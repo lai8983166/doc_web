@@ -9,6 +9,8 @@
               <div class="marigin-set">
               <v-btn class="custom-btn" @click="goToLogin">登录</v-btn>
               <v-btn class="custom-btn" @click="goToRegister">注册</v-btn>
+              <button @click="increment">+</button>
+              <div>{{ count }}</div>
             </div>
             </v-card-text>
           </v-card>
@@ -19,7 +21,13 @@
   
   <script>
   export default {
+    data(){
+      return{
+        count:0
+      };
+    },
     methods: {
+      increment(){this.count++;},
       goToLogin() {
         this.$router.push({ name: 'Login' });
       },

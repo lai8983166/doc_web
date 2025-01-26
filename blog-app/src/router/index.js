@@ -1,39 +1,35 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
-import Login from '../views/Login.vue';
-import Dashboard from '../views/Dashboard.vue';
-import ArticleEditor from '../views/ArticleEditor.vue';
-import SidebarContent from '../views/SidebarContent.vue'; // 侧边栏内容
+import Login from '@/views/Login.vue';
+import Dashboard from '@/views/Dashboard.vue';
 
+// 路由配置
 const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        components: {
-            default: Home,
-            sidebar: SidebarContent,
-        },
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: Login,
-    },
-    {
-        path: '/dashboard',
-        name: 'Dashboard',
-        component: Dashboard,
-    },
-    {
-        path: '/editor',
-        name: 'ArticleEditor',
-        component: ArticleEditor,
-    },
+  {
+    path: '/',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+  },
 ];
 
+// 创建路由
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
-    routes,
+  history: createWebHistory(),
+  routes,
+});
+
+// 路由守卫
+router.beforeEach((to, from, next) => {
+  const user = localStorage.getItem('user');
+  if (to.name !== 'Login' && !user) {
+    next({ name: 'Login' });
+  } else {
+    next();
+  }
 });
 
 export default router;

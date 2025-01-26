@@ -1,51 +1,26 @@
 <template>
-    <v-container>
-      <v-row>
-        <v-col cols="12" md="6">
-          <v-btn class="custom-btn" @click="goToEditor">创建新文章</v-btn>
-        </v-col>
-      </v-row>
-      <v-row>
-        <!-- 展示用户文章列表 -->
-      </v-row>
-    </v-container>
-  </template>
-  
-  <script>
-  export default {
-    methods: {
-      goToEditor() {
-        this.$router.push({ name: 'ArticleEditor' });
-      },
-    },
-  };
-  </script>
-  
-  <style scoped>
+  <div>
+    <Navbar />
+    <div class="dashboard-content">
+      <h1>欢迎来到控制面板</h1>
+      <p>这里是用户的个人信息和功能界面。</p>
+    </div>
+  </div>
+</template>
 
+<script>
+import Navbar from '@/components/Navbar.vue';
 
-.custom-btn {
-  border: 2px solid #007BFF; /* 设置边框颜色 */
-  border-radius: 12px; /* 设置圆角 */
-  padding: 2px 20px; /* 内边距，确保文本和边框之间有间隔 */
-  color: #007BFF; /* 按钮文本颜色 */
-  transition: all 0.3s ease; /* 添加过渡效果 */
-  width: 80px; /* 使按钮宽度自适应 */
-  margin-top: 100px;
-  margin-block-start: 100px;
-  margin: 0;
-}
+export default {
+  name: 'Dashboard',
+  components: {
+    Navbar,
+  },
+};
+</script>
 
-.custom-btn:hover {
-  background-color: #007BFF; /* 悬停时背景色 */
-  color: white; /* 悬停时文本颜色 */
-}
-
-.custom-btn:focus {
-  outline: none; /* 去掉焦点边框 */
-}
-
-.marigin-set{
-    margin-top: 5px;
+<style scoped>
+.dashboard-content {
+  padding: 20px;
 }
 </style>
